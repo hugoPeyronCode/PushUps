@@ -22,6 +22,14 @@ class HomeViewModel: ObservableObject {
         loadStartDate()
     }
     
+    var progress: Double {
+        // Ensure division by zero is handled by returning 0 progress if totalDays is 0
+        let totalDays = 100
+        // Calculate progress as currentDay / totalDays
+        // Note: Convert to Double for accurate division and to match ProgressView's expected type
+        return Double(currentDay) / Double(totalDays)
+    }
+    
     func setStartDate(date: Date) {
         let defaults = UserDefaults.standard
         defaults.set(date, forKey: "StartDate")
@@ -56,11 +64,11 @@ class HomeViewModel: ObservableObject {
     
     func updateDayState(dayID: Int) -> Color {
         if dayID < currentDay {
-            return .gray
-        } else if dayID == currentDay {
             return .green
-        } else {
+        } else if dayID == currentDay {
             return .blue
+        } else {
+            return .gray
         }
     }
     
