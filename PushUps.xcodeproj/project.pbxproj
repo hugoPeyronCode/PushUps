@@ -7,18 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		502E553F2BAD9E4B00C2A7F2 /* PushupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502E553E2BAD9E4B00C2A7F2 /* PushupsView.swift */; };
+		505FD9492BA4658B00C0B306 /* RoundedSpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505FD9482BA4658B00C0B306 /* RoundedSpacer.swift */; };
+		505FD94F2BA468CB00C0B306 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505FD94E2BA468CB00C0B306 /* Day.swift */; };
+		505FD9512BA46E8F00C0B306 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505FD9502BA46E8F00C0B306 /* HomeViewModel.swift */; };
 		507D24132B94F75900FCCB6F /* PushUpsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D24122B94F75900FCCB6F /* PushUpsApp.swift */; };
-		507D24152B94F75900FCCB6F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D24142B94F75900FCCB6F /* ContentView.swift */; };
 		507D24172B94F75B00FCCB6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 507D24162B94F75B00FCCB6F /* Assets.xcassets */; };
 		507D241A2B94F75B00FCCB6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 507D24192B94F75B00FCCB6F /* Preview Assets.xcassets */; };
+		507D24242B94F78A00FCCB6F /* DayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D24232B94F78A00FCCB6F /* DayButton.swift */; };
+		507D24292B94F85D00FCCB6F /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D24282B94F85D00FCCB6F /* CircularProgressBar.swift */; };
+		507D242B2B94FA2500FCCB6F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D242A2B94FA2500FCCB6F /* HomeView.swift */; };
+		507D242F2B94FF2200FCCB6F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D242E2B94FF2200FCCB6F /* OnboardingView.swift */; };
+		507D24312B9503AF00FCCB6F /* HowManyPushupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D24302B9503AF00FCCB6F /* HowManyPushupsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		502E553E2BAD9E4B00C2A7F2 /* PushupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushupsView.swift; sourceTree = "<group>"; };
+		505FD9482BA4658B00C0B306 /* RoundedSpacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedSpacer.swift; sourceTree = "<group>"; };
+		505FD94B2BA4673C00C0B306 /* PROJECT NOTES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "PROJECT NOTES.md"; sourceTree = "<group>"; };
+		505FD94E2BA468CB00C0B306 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		505FD9502BA46E8F00C0B306 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		507D240F2B94F75900FCCB6F /* PushUps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushUps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		507D24122B94F75900FCCB6F /* PushUpsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushUpsApp.swift; sourceTree = "<group>"; };
-		507D24142B94F75900FCCB6F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		507D24162B94F75B00FCCB6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		507D24192B94F75B00FCCB6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		507D24232B94F78A00FCCB6F /* DayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayButton.swift; sourceTree = "<group>"; };
+		507D24282B94F85D00FCCB6F /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
+		507D242A2B94FA2500FCCB6F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		507D242E2B94FF2200FCCB6F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		507D24302B9503AF00FCCB6F /* HowManyPushupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowManyPushupsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,10 +49,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		502E553C2BAD9E1E00C2A7F2 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				507D242A2B94FA2500FCCB6F /* HomeView.swift */,
+				505FD9502BA46E8F00C0B306 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		502E553D2BAD9E2A00C2A7F2 /* Pushups */ = {
+			isa = PBXGroup;
+			children = (
+				502E553E2BAD9E4B00C2A7F2 /* PushupsView.swift */,
+			);
+			path = Pushups;
+			sourceTree = "<group>";
+		};
+		505FD9472BA4657600C0B306 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				505FD9482BA4658B00C0B306 /* RoundedSpacer.swift */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		505FD94A2BA4670800C0B306 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				505FD94B2BA4673C00C0B306 /* PROJECT NOTES.md */,
+			);
+			path = Notes;
+			sourceTree = "<group>";
+		};
+		505FD94C2BA468B700C0B306 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				505FD94E2BA468CB00C0B306 /* Day.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		507D24062B94F75900FCCB6F = {
 			isa = PBXGroup;
 			children = (
 				507D24112B94F75900FCCB6F /* PushUps */,
+				505FD94A2BA4670800C0B306 /* Notes */,
 				507D24102B94F75900FCCB6F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,7 +111,10 @@
 			isa = PBXGroup;
 			children = (
 				507D24122B94F75900FCCB6F /* PushUpsApp.swift */,
-				507D24142B94F75900FCCB6F /* ContentView.swift */,
+				507D242C2B94FF0B00FCCB6F /* Onboarding */,
+				507D24212B94F76D00FCCB6F /* Components */,
+				507D24202B94F76900FCCB6F /* Core */,
+				505FD94C2BA468B700C0B306 /* Models */,
 				507D24162B94F75B00FCCB6F /* Assets.xcassets */,
 				507D24182B94F75B00FCCB6F /* Preview Content */,
 			);
@@ -65,6 +127,74 @@
 				507D24192B94F75B00FCCB6F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		507D24202B94F76900FCCB6F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				502E553C2BAD9E1E00C2A7F2 /* Home */,
+				502E553D2BAD9E2A00C2A7F2 /* Pushups */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		507D24212B94F76D00FCCB6F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				505FD9472BA4657600C0B306 /* Others */,
+				507D24262B94F83500FCCB6F /* ProgressBar */,
+				507D24252B94F82E00FCCB6F /* Buttons */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		507D24222B94F77800FCCB6F /* DayButton */ = {
+			isa = PBXGroup;
+			children = (
+				507D24232B94F78A00FCCB6F /* DayButton.swift */,
+			);
+			path = DayButton;
+			sourceTree = "<group>";
+		};
+		507D24252B94F82E00FCCB6F /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				507D24222B94F77800FCCB6F /* DayButton */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		507D24262B94F83500FCCB6F /* ProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+				507D24272B94F83B00FCCB6F /* CircularProgressBar */,
+			);
+			path = ProgressBar;
+			sourceTree = "<group>";
+		};
+		507D24272B94F83B00FCCB6F /* CircularProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+				507D24282B94F85D00FCCB6F /* CircularProgressBar.swift */,
+			);
+			path = CircularProgressBar;
+			sourceTree = "<group>";
+		};
+		507D242C2B94FF0B00FCCB6F /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				507D242E2B94FF2200FCCB6F /* OnboardingView.swift */,
+				507D242D2B94FF1200FCCB6F /* HowManyPushUpsView */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		507D242D2B94FF1200FCCB6F /* HowManyPushUpsView */ = {
+			isa = PBXGroup;
+			children = (
+				507D24302B9503AF00FCCB6F /* HowManyPushupsView.swift */,
+			);
+			path = HowManyPushUpsView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +267,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				507D24152B94F75900FCCB6F /* ContentView.swift in Sources */,
+				507D24242B94F78A00FCCB6F /* DayButton.swift in Sources */,
+				502E553F2BAD9E4B00C2A7F2 /* PushupsView.swift in Sources */,
 				507D24132B94F75900FCCB6F /* PushUpsApp.swift in Sources */,
+				507D242F2B94FF2200FCCB6F /* OnboardingView.swift in Sources */,
+				507D242B2B94FA2500FCCB6F /* HomeView.swift in Sources */,
+				505FD9492BA4658B00C0B306 /* RoundedSpacer.swift in Sources */,
+				505FD94F2BA468CB00C0B306 /* Day.swift in Sources */,
+				505FD9512BA46E8F00C0B306 /* HomeViewModel.swift in Sources */,
+				507D24292B94F85D00FCCB6F /* CircularProgressBar.swift in Sources */,
+				507D24312B9503AF00FCCB6F /* HowManyPushupsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +418,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,6 +448,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

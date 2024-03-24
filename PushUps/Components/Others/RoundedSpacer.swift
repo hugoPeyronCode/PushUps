@@ -8,11 +8,32 @@
 import SwiftUI
 
 struct RoundedSpacer: View {
+    let color: Color
+    let width: CGFloat
+    let height: CGFloat
+    let cornerRadius: CGFloat
+    
+    init(color: Color, width: CGFloat, height: CGFloat, cornerRadius: CGFloat) {
+        self.color = color
+        self.width = width
+        self.height = height
+        self.cornerRadius = cornerRadius
+    }
+    
+    init(color: Color) {
+        self.color = color
+        self.width = 10
+        self.height = 50
+        self.cornerRadius = 25
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        RoundedRectangle(cornerRadius: cornerRadius)
+            .frame(width: width, height: height)
+            .foregroundStyle(color)
     }
 }
 
 #Preview {
-    RoundedSpacer()
+    RoundedSpacer(color: .gray)
 }

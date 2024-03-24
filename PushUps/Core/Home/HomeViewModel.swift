@@ -15,13 +15,36 @@ enum DayStatus {
 }
 
 class HomeViewModel: ObservableObject {
+    @Published var days: [Day] = []
     @Published var currentDay = 0
-    
+    @Published var userGoal: Int = 50 {
+         didSet {
+             updateGoals()
+         }
+     }
+
     init() {
-        // Load the start date when the view model initializes
+        if let savedDays = UserDefaults.standard.object(forKey: "SavedDays") as? Data {
+            let decoder = JSONDecoder()
+            if let loadedDays = try? decoder.decode([Day].self, from: savedDays) {
+                self.days = loadedDays
+            }
+        } else {
+            // Initialize days with the default goal if not saved data found
+            self.days = (1...100).map { Day(id: $0, goal: self.userGoal) }
+        }
         loadStartDate()
+        saveDays()
     }
+
+     func updateGoals() {
+         for i in days.indices {
+             days[i].goal = userGoal
+         }
+     }
     
+    
+    // Handle the progress bar in the header
     var progress: Double {
         // Ensure division by zero is handled by returning 0 progress if totalDays is 0
         let totalDays = 100
@@ -38,11 +61,17 @@ class HomeViewModel: ObservableObject {
         updateCurrentID(startDate: date)
     }
     
+    func updateDay(_ updatedDay: Day) {
+        if let index = days.firstIndex(where: { $0.id == updatedDay.id }) {
+            days[index] = updatedDay
+        }
+    }
+    
     private func loadStartDate() {
         let defaults = UserDefaults.standard
-        
+                
         if let startDate = defaults.object(forKey: "StartDate") as? Date {
-            print("update currentID")
+            print("update currentID to \(startDate.description)")
             updateCurrentID(startDate: startDate)
         } else {
             // Handle case where start date is not set, e.g., by setting a default start date or prompting the user
@@ -61,15 +90,49 @@ class HomeViewModel: ObservableObject {
         
         currentDay = daysSinceStart + 1
     }
-    
-    func updateDayState(dayID: Int) -> Color {
-        if dayID < currentDay {
+        
+    func updateDayColor(dayID: Int) -> Color {
+        
+        let count = days[dayID].pushupsCount
+        let goal = days[dayID].goal
+        
+        if count > goal {
+            return .yellow
+        } else if dayID == currentDay && count == goal {
             return .green
         } else if dayID == currentDay {
             return .blue
-        } else {
+        } else if dayID < currentDay && count == goal {
+            return .green
+        } else if dayID < currentDay && count < goal {
+            return.red
+        }
+        else {
             return .gray
         }
     }
     
+    func resetStartDate() {
+        // Reset the current day to 1
+        currentDay = 1
+
+        // Set the new start date to today
+        let today = Date()
+        let defaults = UserDefaults.standard
+        defaults.set(today, forKey: "StartDate")
+
+        self.days = (1...100).map { Day(id: $0, goal: self.userGoal, pushupsCount: 0) }
+
+        // Save the newly initialized days to UserDefaults
+        saveDays()
+    }
+
+    
+    func saveDays() {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(days) {
+            UserDefaults.standard.set(encoded, forKey: "SavedDays")
+            print("Days saved")
+        }
+    }
 }

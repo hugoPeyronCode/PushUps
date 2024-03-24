@@ -11,7 +11,7 @@ import SwiftUI
 struct PushUpsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }
