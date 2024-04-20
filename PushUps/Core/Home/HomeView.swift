@@ -14,7 +14,6 @@ struct HomeView: View {
     @State private var selectedDate = Date()
     @State private var isNavigatingToPushUpsView = false
     @State private var scrollTarget: Int? = nil
-
     
     var body: some View {
         NavigationView {
