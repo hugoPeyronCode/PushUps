@@ -17,8 +17,21 @@ struct PushupsView: View {
     var body: some View {
         VStack {
             
-            xMark
             
+            
+            xMark
+            if cameraManager.isFacingUpward {
+                Text("Let's gooo")
+                    .fontWeight(.semibold)
+                    .padding()
+                    .multilineTextAlignment(.center)
+            } else {
+                Text("Please place the phone correctly, facing upward.")
+                    .fontWeight(.semibold)
+                    .padding()
+                    .multilineTextAlignment(.center)
+                
+            }
             Spacer()
             
             HeaderText
