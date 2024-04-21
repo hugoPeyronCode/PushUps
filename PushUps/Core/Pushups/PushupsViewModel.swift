@@ -9,6 +9,7 @@ import AVFoundation
 import UIKit
 import VideoToolbox
 import CoreImage
+import CoreMotion
 
 extension UIImage {
     // Assuming depth data is normalized to values between 0 (black, closer) and 255 (white, further)
@@ -35,31 +36,31 @@ extension UIImage {
         // Analyze pixels
         let threshold = analyzePixelsForCloseProximity(grayscaleImage)
         var label = ""
-                if threshold > 0.5 {
-                    label = "Close"
-                } else if threshold > 0.08 {
-                    label = "Mid"
-                } else {
-                    label = "Far"
-                }
+        if threshold > 0.5 {
+            label = "Close"
+        } else if threshold > 0.08 {
+            label = "Mid"
+        } else {
+            label = "Far"
+        }
         completion(image, label)
         
     }
-
+    
     private static func analyzePixelsForCloseProximity(_ image: UIImage?) -> Double {
         guard let cgImage = image?.cgImage else { return 0.0 }
         let width = cgImage.width
         let height = cgImage.height
         let colorSpace = CGColorSpaceCreateDeviceGray()
-
+        
         guard let context = CGContext(data: nil, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width, space: colorSpace, bitmapInfo: 0) else { return 0.0 }
         context.draw(cgImage, in: CGRect(x: 0, y: 0, width: width, height: height))
-
+        
         guard let pixelData = context.data else { return 0.0 }
-
+        
         var blackPixelCount = 0
         var totalPixels = 0
-
+        
         for x in 0 ..< width {
             for y in 0 ..< height {
                 let offset = y * width + x
@@ -83,15 +84,38 @@ class CameraManager: NSObject, ObservableObject, AVCaptureDepthDataOutputDelegat
     @Published var depthImage: UIImage?
     @Published var distanceLabel: String = "Unknown"
     @Published var autoCounter: Bool = false
-
+    
+    
     private var lastDistanceState: String = "Far"
     @Published var pushupCount: Int = 0
-
+    
+    
+    private var motionManager = CMMotionManager()
+    @Published var isFacingUpward = false
+    
+    
     override init() {
         super.init()
         self.configureCaptureSession()
+        startMotionUpdates()
     }
-
+    
+    func startMotionUpdates() {
+        if motionManager.isDeviceMotionAvailable {
+            motionManager.deviceMotionUpdateInterval = 0.1
+            motionManager.startDeviceMotionUpdates(to: .main) { [weak self] (data, error) in
+                guard let data = data, error == nil else {
+                    print("Error: \(error?.localizedDescription ?? "Unknown error")")
+                    return
+                }
+                // Check if the device is facing upward
+                let z = data.gravity.z
+                self?.isFacingUpward = z < -0.95
+                print(self?.isFacingUpward)
+            }
+        }
+    }
+    
     func configureCaptureSession() {
         sessionQueue.async {
             guard let device = AVCaptureDevice.default(.builtInTrueDepthCamera, for: .video, position: .front),
@@ -99,29 +123,29 @@ class CameraManager: NSObject, ObservableObject, AVCaptureDepthDataOutputDelegat
                 print("Failed to get the camera device or create device input")
                 return
             }
-
+            
             self.session.beginConfiguration()
             
             if self.session.canAddInput(input) {
                 self.session.addInput(input)
             }
-
+            
             if self.session.canAddOutput(self.depthDataOutput) {
                 self.session.addOutput(self.depthDataOutput)
                 self.depthDataOutput.isFilteringEnabled = false
                 self.depthDataOutput.setDelegate(self, callbackQueue: self.sessionQueue)
             }
-
+            
             if self.session.canAddOutput(self.videoDataOutput) {
                 self.session.addOutput(self.videoDataOutput)
                 self.videoDataOutput.setSampleBufferDelegate(self, queue: self.sessionQueue)
             }
-
+            
             self.session.commitConfiguration()
             self.session.startRunning()
         }
     }
-
+    
     private var temporaryState1: String = "None"
     private var temporaryState2: String = "None"
     private var temporaryState3: String = "None"
@@ -172,7 +196,7 @@ class CameraManager: NSObject, ObservableObject, AVCaptureDepthDataOutputDelegat
             }
         }
     }
-
+    
     private func calculateAverageDepth(from depthMap: CVPixelBuffer) -> Float {
         CVPixelBufferLockBaseAddress(depthMap, .readOnly)
         defer { CVPixelBufferUnlockBaseAddress(depthMap, .readOnly) }
@@ -199,6 +223,6 @@ class CameraManager: NSObject, ObservableObject, AVCaptureDepthDataOutputDelegat
         
         return (count > 0) ? totalDepth / count : 0.0
     }
-
+    
     
 }
