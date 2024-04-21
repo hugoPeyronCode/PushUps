@@ -35,13 +35,7 @@ struct HomeView: View {
                         .onAppear {
                             scrollTarget = viewModel.currentDay
                         }
-                        .onChange(of: scrollTarget) { target in
-                            if let target = target {
-                                withAnimation {
-                                    value.scrollTo(target, anchor: .center)
-                                }
-                            }
-                        }
+                        
                     }
                 }
 
@@ -70,9 +64,7 @@ struct HomeView: View {
                 DatePicker("Select Start Date", selection: $selectedDate, displayedComponents: .date)
                     .datePickerStyle(WheelDatePickerStyle())
                     .padding()
-                    .onChange(of: selectedDate) { newDate in
-                        viewModel.setStartDate(date: newDate)
-                    }
+                    
             }
             .onAppear {
                 viewModel.saveDays()

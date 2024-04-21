@@ -19,6 +19,7 @@
 		507D242B2B94FA2500FCCB6F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D242A2B94FA2500FCCB6F /* HomeView.swift */; };
 		507D242F2B94FF2200FCCB6F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D242E2B94FF2200FCCB6F /* OnboardingView.swift */; };
 		507D24312B9503AF00FCCB6F /* HowManyPushupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D24302B9503AF00FCCB6F /* HowManyPushupsView.swift */; };
+		CEFA9D052BD52ACB001346CE /* PushupsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA9D042BD52ACB001346CE /* PushupsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		507D242A2B94FA2500FCCB6F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		507D242E2B94FF2200FCCB6F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		507D24302B9503AF00FCCB6F /* HowManyPushupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowManyPushupsView.swift; sourceTree = "<group>"; };
+		CEFA9D042BD52ACB001346CE /* PushupsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushupsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				502E553E2BAD9E4B00C2A7F2 /* PushupsView.swift */,
+				CEFA9D042BD52ACB001346CE /* PushupsViewModel.swift */,
 			);
 			path = Pushups;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				505FD9492BA4658B00C0B306 /* RoundedSpacer.swift in Sources */,
 				505FD94F2BA468CB00C0B306 /* Day.swift in Sources */,
 				505FD9512BA46E8F00C0B306 /* HomeViewModel.swift in Sources */,
+				CEFA9D052BD52ACB001346CE /* PushupsViewModel.swift in Sources */,
 				507D24292B94F85D00FCCB6F /* CircularProgressBar.swift in Sources */,
 				507D24312B9503AF00FCCB6F /* HowManyPushupsView.swift in Sources */,
 			);
@@ -410,9 +414,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PushUps/Preview Content\"";
-				DEVELOPMENT_TEAM = YA24P24868;
+				DEVELOPMENT_TEAM = K79TCWP7AP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = caca;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -440,9 +445,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PushUps/Preview Content\"";
-				DEVELOPMENT_TEAM = YA24P24868;
+				DEVELOPMENT_TEAM = K79TCWP7AP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = caca;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
