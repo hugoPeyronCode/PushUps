@@ -44,7 +44,6 @@ extension UIImage {
                 }
         completion(image, label)
         
-        
     }
 
     private static func analyzePixelsForCloseProximity(_ image: UIImage?) -> Double {
@@ -75,7 +74,6 @@ extension UIImage {
     }
 }
 
-
 class CameraManager: NSObject, ObservableObject, AVCaptureDepthDataOutputDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
     private let session = AVCaptureSession()
     private let depthDataOutput = AVCaptureDepthDataOutput()
@@ -86,10 +84,8 @@ class CameraManager: NSObject, ObservableObject, AVCaptureDepthDataOutputDelegat
     @Published var distanceLabel: String = "Unknown"
     @Published var autoCounter: Bool = false
 
-    
     private var lastDistanceState: String = "Far"
     @Published var pushupCount: Int = 0
-
 
     override init() {
         super.init()
@@ -177,10 +173,6 @@ class CameraManager: NSObject, ObservableObject, AVCaptureDepthDataOutputDelegat
         }
     }
 
-
-
-    
-
     private func calculateAverageDepth(from depthMap: CVPixelBuffer) -> Float {
         CVPixelBufferLockBaseAddress(depthMap, .readOnly)
         defer { CVPixelBufferUnlockBaseAddress(depthMap, .readOnly) }
@@ -210,5 +202,3 @@ class CameraManager: NSObject, ObservableObject, AVCaptureDepthDataOutputDelegat
 
     
 }
-
-

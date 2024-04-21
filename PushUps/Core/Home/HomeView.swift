@@ -35,6 +35,13 @@ struct HomeView: View {
                         .onAppear {
                             scrollTarget = viewModel.currentDay
                         }
+                        .onChange(of: scrollTarget) { target, uselessArguement in
+                            if let target = target {
+                                withAnimation {
+                                    value.scrollTo(target, anchor: .center)
+                                }
+                            }
+                        }
                         
                     }
                 }
@@ -64,7 +71,9 @@ struct HomeView: View {
                 DatePicker("Select Start Date", selection: $selectedDate, displayedComponents: .date)
                     .datePickerStyle(WheelDatePickerStyle())
                     .padding()
-                    
+                    .onChange(of: selectedDate) { oldValue, newValue in
+                        viewModel.setStartDate(date: newValue)
+                    }
             }
             .onAppear {
                 viewModel.saveDays()
@@ -112,6 +121,7 @@ struct HomeView: View {
             // Now set the target which triggers the scroll
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 scrollTarget = viewModel.currentDay
+                print(viewModel.currentDay)
             }
         }
         .padding()
