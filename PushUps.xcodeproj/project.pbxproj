@@ -19,7 +19,7 @@
 		507D242B2B94FA2500FCCB6F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D242A2B94FA2500FCCB6F /* HomeView.swift */; };
 		507D242F2B94FF2200FCCB6F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D242E2B94FF2200FCCB6F /* OnboardingView.swift */; };
 		507D24312B9503AF00FCCB6F /* HowManyPushupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D24302B9503AF00FCCB6F /* HowManyPushupsView.swift */; };
-		50F630522BD58E7F00BF7D70 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F630512BD58E7F00BF7D70 /* HapticManager.swift */; };
+		50F630562BD58FAB00BF7D70 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F630552BD58FAB00BF7D70 /* HapticManager.swift */; };
 		CEFA9D052BD52ACB001346CE /* PushupsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA9D042BD52ACB001346CE /* PushupsViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +38,7 @@
 		507D242A2B94FA2500FCCB6F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		507D242E2B94FF2200FCCB6F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		507D24302B9503AF00FCCB6F /* HowManyPushupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowManyPushupsView.swift; sourceTree = "<group>"; };
-		50F630512BD58E7F00BF7D70 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		50F630552BD58FAB00BF7D70 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		CEFA9D042BD52ACB001346CE /* PushupsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushupsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,7 +115,7 @@
 		507D24112B94F75900FCCB6F /* PushUps */ = {
 			isa = PBXGroup;
 			children = (
-				50F630502BD58E7000BF7D70 /* New Group */,
+				50F630532BD58F9700BF7D70 /* Haptic */,
 				507D24122B94F75900FCCB6F /* PushUpsApp.swift */,
 				507D242C2B94FF0B00FCCB6F /* Onboarding */,
 				507D24212B94F76D00FCCB6F /* Components */,
@@ -203,12 +203,12 @@
 			path = HowManyPushUpsView;
 			sourceTree = "<group>";
 		};
-		50F630502BD58E7000BF7D70 /* New Group */ = {
+		50F630532BD58F9700BF7D70 /* Haptic */ = {
 			isa = PBXGroup;
 			children = (
-				50F630512BD58E7F00BF7D70 /* HapticManager.swift */,
+				50F630552BD58FAB00BF7D70 /* HapticManager.swift */,
 			);
-			path = "New Group";
+			path = Haptic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,7 +291,7 @@
 				505FD9512BA46E8F00C0B306 /* HomeViewModel.swift in Sources */,
 				CEFA9D052BD52ACB001346CE /* PushupsViewModel.swift in Sources */,
 				507D24292B94F85D00FCCB6F /* CircularProgressBar.swift in Sources */,
-				50F630522BD58E7F00BF7D70 /* HapticManager.swift in Sources */,
+				50F630562BD58FAB00BF7D70 /* HapticManager.swift in Sources */,
 				507D24312B9503AF00FCCB6F /* HowManyPushupsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
