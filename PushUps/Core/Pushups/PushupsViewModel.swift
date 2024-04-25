@@ -10,6 +10,7 @@ import UIKit
 import VideoToolbox
 import CoreImage
 import CoreMotion
+import SwiftUI
 
 extension UIImage {
     // Assuming depth data is normalized to values between 0 (black, closer) and 255 (white, further)
@@ -38,10 +39,8 @@ extension UIImage {
         var label = ""
         if threshold > 0.5 {
             label = "Close"
-        } else if threshold > 0.08 {
-            label = "Mid"
         } else {
-            label = "Far"
+            label = "Mid"
         }
         completion(image, label)
         
@@ -74,7 +73,6 @@ extension UIImage {
         return Double(blackPixelCount) / Double(totalPixels)
     }
 }
-
 class CameraManager: NSObject, ObservableObject, AVCaptureDepthDataOutputDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
     private let session = AVCaptureSession()
     private let depthDataOutput = AVCaptureDepthDataOutput()
@@ -84,19 +82,17 @@ class CameraManager: NSObject, ObservableObject, AVCaptureDepthDataOutputDelegat
     @Published var depthImage: UIImage?
     @Published var distanceLabel: String = "Unknown"
     @Published var autoCounter: Bool = false
-    
-    
-    private var lastDistanceState: String = "Far"
     @Published var pushupCount: Int = 0
-    
     
     private var motionManager = CMMotionManager()
     @Published var isFacingUpward = false
     
+    // Maintaining a history of the last few states
+    var stateHistory: [String] = []
     
     override init() {
         super.init()
-        self.configureCaptureSession()
+        configureCaptureSession()
         startMotionUpdates()
     }
     
@@ -108,10 +104,7 @@ class CameraManager: NSObject, ObservableObject, AVCaptureDepthDataOutputDelegat
                     print("Error: \(error?.localizedDescription ?? "Unknown error")")
                     return
                 }
-                // Check if the device is facing upward
-                let z = data.gravity.z
-                self?.isFacingUpward = z < -0.95
-                print(self?.isFacingUpward)
+                self?.isFacingUpward = data.gravity.z < -0.95
             }
         }
     }
@@ -125,32 +118,21 @@ class CameraManager: NSObject, ObservableObject, AVCaptureDepthDataOutputDelegat
             }
             
             self.session.beginConfiguration()
-            
             if self.session.canAddInput(input) {
                 self.session.addInput(input)
             }
-            
             if self.session.canAddOutput(self.depthDataOutput) {
                 self.session.addOutput(self.depthDataOutput)
-                self.depthDataOutput.isFilteringEnabled = false
                 self.depthDataOutput.setDelegate(self, callbackQueue: self.sessionQueue)
             }
-            
             if self.session.canAddOutput(self.videoDataOutput) {
                 self.session.addOutput(self.videoDataOutput)
                 self.videoDataOutput.setSampleBufferDelegate(self, queue: self.sessionQueue)
             }
-            
             self.session.commitConfiguration()
             self.session.startRunning()
         }
     }
-    
-    private var temporaryState1: String = "None"
-    private var temporaryState2: String = "None"
-    private var temporaryState3: String = "None"
-    private var temporaryState4: String = "None"
-    private var temporaryState5: String = "None"
     
     func depthDataOutput(_ output: AVCaptureDepthDataOutput, didOutput depthData: AVDepthData, timestamp: CMTime, connection: AVCaptureConnection) {
         let depthMap = depthData.depthDataMap
@@ -159,70 +141,36 @@ class CameraManager: NSObject, ObservableObject, AVCaptureDepthDataOutputDelegat
             DispatchQueue.main.async {
                 self.depthImage = image
                 self.distanceLabel = label
-                
-                if label == "Far" {
-                    self.temporaryState1 = "true"
-                }
-                
-                if self.temporaryState1 == "true" {
-                    if label == "Mid" {
-                        self.temporaryState2 = "true"
-                    }
-                }
-                
-                if self.temporaryState2 == "true" {
-                    if label == "Close" {
-                        self.temporaryState3 = "true"
-                    }
-                }
-                
-                if self.temporaryState3 == "true" {
-                    if label == "Mid" {
-                        self.temporaryState4 = "true"
-                    }
-                }
-                
-                if self.temporaryState4 == "true" {
-                    if label == "Far" {
-                        self.pushupCount = self.pushupCount + 1
-                        
-                        self.temporaryState1 = "false"
-                        self.temporaryState2 = "false"
-                        self.temporaryState3 = "false"
-                        self.temporaryState4 = "false"
-                        self.temporaryState5 = "false"
-                    }
-                }
+                self.updatePushupCount(for: label)
             }
         }
     }
     
-    private func calculateAverageDepth(from depthMap: CVPixelBuffer) -> Float {
-        CVPixelBufferLockBaseAddress(depthMap, .readOnly)
-        defer { CVPixelBufferUnlockBaseAddress(depthMap, .readOnly) }
-        
-        let width = CVPixelBufferGetWidth(depthMap)
-        let height = CVPixelBufferGetHeight(depthMap)
-        guard let data = CVPixelBufferGetBaseAddress(depthMap)?.assumingMemoryBound(to: Float32.self) else {
-            return 0.0
-        }
-        
-        var totalDepth: Float = 0
-        var count: Float = 0
-        
-        for y in 0..<height {
-            for x in 0..<width {
-                let idx = y * width + x
-                let depth = data[idx]
-                if depth > 0 && depth.isFinite {
-                    totalDepth += depth
-                    count += 1
-                }
+    private func updatePushupCount(for newState: String) {
+        // Append new state only if it's different from the last state in history
+        if let lastState = stateHistory.last {
+            if newState != lastState {
+                stateHistory.append(newState)
             }
+        } else {
+            // If the history is empty, add the first state
+            stateHistory.append(newState)
+        }
+
+        // Keep only the last three states for comparison
+        if stateHistory.count > 3 {
+            stateHistory.removeFirst()
         }
         
-        return (count > 0) ? totalDepth / count : 0.0
+        // Check if the current state history matches the required sequence
+        if stateHistory == ["Mid", "Close", "Mid"] {
+            withAnimation {
+                pushupCount += 1
+            }
+            // Reset the state history after a successful pushup count
+            stateHistory.removeAll()
+        }
     }
-    
+
     
 }

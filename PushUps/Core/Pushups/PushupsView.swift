@@ -15,38 +15,50 @@ struct PushupsView: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        VStack {
-            
-            
-            
-            xMark
-            if cameraManager.isFacingUpward {
-                Text("Let's gooo")
-                    .fontWeight(.semibold)
+        NavigationStack {
+            VStack {
+                
+                
+                PhoneFacingUpwardWarning
+                
+                //Here I would like to display the camera of the phone.
+                CameraView
+                
+                ZStack {
+                    
+                    CircularProgressBar(progress: Double(cameraManager.pushupCount) / Double(homeViewModel.days[dayIndex].goal), color: .green)
+                    
+                    ProgressInformation
+
+                }
+                .frame(width: SizeConstants.screenWidth / 2 )
+                
+                Text(homeViewModel.days[dayIndex].isGoalComplete ? "Goal Completed!" : "Keep Going!")
                     .padding()
-                    .multilineTextAlignment(.center)
-            } else {
-                Text("Please place the phone correctly, facing upward.")
-                    .fontWeight(.semibold)
-                    .padding()
-                    .multilineTextAlignment(.center)
+                
+                Text(cameraManager.stateHistory.debugDescription)
+                
+                Button("+1") {
+                    withAnimation(.snappy){
+                        cameraManager.pushupCount += 1
+                    }
+                }
+                
+                DistanceInformation
                 
             }
-            Spacer()
-            
-            HeaderText
-            
-            Spacer()
-            
-            FooterText
-            
+            .toolbar(content: {
+                ToolbarItem(placement: .topBarLeading) {
+                    xMark(dismiss)
+                }
+            })
+            .onDisappear{
+                homeViewModel.saveDays()
+                homeViewModel.days[dayIndex].pushupsCount = cameraManager.pushupCount
+            }
+            .onAppear() {
+                cameraManager.pushupCount = homeViewModel.days[dayIndex].pushupsCount
         }
-        .onDisappear{
-            homeViewModel.saveDays()
-            homeViewModel.days[dayIndex].pushupsCount = cameraManager.pushupCount
-        }
-        .onAppear() {
-            cameraManager.pushupCount = homeViewModel.days[dayIndex].pushupsCount
         }
     }
 }
@@ -70,35 +82,25 @@ extension PushupsView {
         }
     }
     
-    var xMark : some View {
-        VStack {
-            HStack {
-                Button(action: {dismiss()}, label: {
-                    Image(systemName: "xmark")
-                        .bold()
-                        .foregroundStyle(.white)
-                })
+    var PhoneFacingUpwardWarning: some View {
+        Text(cameraManager.isFacingUpward ? "Let's gooo" : "Please place the phone correctly, facing upward.")
+                .fontWeight(.semibold)
                 .padding()
-                Spacer()
-            }
-        }
+                .multilineTextAlignment(.center)
     }
     
-    var HeaderText : some View {
-        Group {
-            Text("Push up count")
-            // Display the pushup count and make sure it's converted to String
+    var ProgressInformation : some View {
+        VStack {
             Text("\(cameraManager.pushupCount) / \(homeViewModel.days[dayIndex].goal)")
             // Display goal completion status
-            Text(homeViewModel.days[dayIndex].isGoalComplete ? "Goal Completed!" : "Keep Going!")
         }
         .fontWeight(.black)
         .font(.title)
     }
     
-    var FooterText : some View {
+    var DistanceInformation : some View {
         // Display distance detected by the camera
-        Text("Distance: \(cameraManager.distanceLabel)")
+        Text("\(cameraManager.distanceLabel)")
             .padding()
     }
 }
