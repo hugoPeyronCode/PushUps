@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5013FD802BE12E010099A07C /* NewCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5013FD7F2BE12E010099A07C /* NewCircularProgressView.swift */; };
+		50148DF62BE6823200F09A17 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50148DF52BE6823200F09A17 /* User.swift */; };
+		50148DF82BE68A5900F09A17 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50148DF72BE68A5900F09A17 /* Colors.swift */; };
+		50148DFB2BE699A600F09A17 /* LinearProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50148DFA2BE699A600F09A17 /* LinearProgressBar.swift */; };
 		502E553F2BAD9E4B00C2A7F2 /* PushupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502E553E2BAD9E4B00C2A7F2 /* PushupsView.swift */; };
 		505FD9492BA4658B00C0B306 /* RoundedSpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505FD9482BA4658B00C0B306 /* RoundedSpacer.swift */; };
 		505FD94F2BA468CB00C0B306 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505FD94E2BA468CB00C0B306 /* Day.swift */; };
@@ -20,12 +24,19 @@
 		507D242F2B94FF2200FCCB6F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D242E2B94FF2200FCCB6F /* OnboardingView.swift */; };
 		507D24312B9503AF00FCCB6F /* HowManyPushupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D24302B9503AF00FCCB6F /* HowManyPushupsView.swift */; };
 		508F77B22BDA55F200FADABC /* xMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508F77B12BDA55F200FADABC /* xMark.swift */; };
-		508F77B62BDA5A5700FADABC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508F77B52BDA5A5700FADABC /* Constants.swift */; };
+		508F77B62BDA5A5700FADABC /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508F77B52BDA5A5700FADABC /* Sizes.swift */; };
+		508F77D52BDAB56800FADABC /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508F77D42BDAB56800FADABC /* CameraView.swift */; };
+		508F77DC2BDC131E00FADABC /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508F77DB2BDC131E00FADABC /* CameraController.swift */; };
+		508F77DE2BDC134300FADABC /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508F77DD2BDC134300FADABC /* CameraViewController.swift */; };
 		50F630562BD58FAB00BF7D70 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F630552BD58FAB00BF7D70 /* HapticManager.swift */; };
 		CEFA9D052BD52ACB001346CE /* PushupsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA9D042BD52ACB001346CE /* PushupsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5013FD7F2BE12E010099A07C /* NewCircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCircularProgressView.swift; sourceTree = "<group>"; };
+		50148DF52BE6823200F09A17 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		50148DF72BE68A5900F09A17 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		50148DFA2BE699A600F09A17 /* LinearProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearProgressBar.swift; sourceTree = "<group>"; };
 		502E553E2BAD9E4B00C2A7F2 /* PushupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushupsView.swift; sourceTree = "<group>"; };
 		505FD9482BA4658B00C0B306 /* RoundedSpacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedSpacer.swift; sourceTree = "<group>"; };
 		505FD94B2BA4673C00C0B306 /* PROJECT NOTES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "PROJECT NOTES.md"; sourceTree = "<group>"; };
@@ -41,7 +52,10 @@
 		507D242E2B94FF2200FCCB6F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		507D24302B9503AF00FCCB6F /* HowManyPushupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowManyPushupsView.swift; sourceTree = "<group>"; };
 		508F77B12BDA55F200FADABC /* xMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xMark.swift; sourceTree = "<group>"; };
-		508F77B52BDA5A5700FADABC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		508F77B52BDA5A5700FADABC /* Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
+		508F77D42BDAB56800FADABC /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		508F77DB2BDC131E00FADABC /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		508F77DD2BDC134300FADABC /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		50F630552BD58FAB00BF7D70 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		CEFA9D042BD52ACB001346CE /* PushupsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushupsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,6 +71,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50148DF92BE6999300F09A17 /* Linear */ = {
+			isa = PBXGroup;
+			children = (
+				50148DFA2BE699A600F09A17 /* LinearProgressBar.swift */,
+			);
+			path = Linear;
+			sourceTree = "<group>";
+		};
 		502E553C2BAD9E1E00C2A7F2 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				505FD94E2BA468CB00C0B306 /* Day.swift */,
+				50148DF52BE6823200F09A17 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -153,6 +176,7 @@
 		507D24212B94F76D00FCCB6F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				508F77D12BDAB2CA00FADABC /* Camera */,
 				505FD9472BA4657600C0B306 /* Others */,
 				507D24262B94F83500FCCB6F /* ProgressBar */,
 				507D24252B94F82E00FCCB6F /* Buttons */,
@@ -179,17 +203,19 @@
 		507D24262B94F83500FCCB6F /* ProgressBar */ = {
 			isa = PBXGroup;
 			children = (
-				507D24272B94F83B00FCCB6F /* CircularProgressBar */,
+				50148DF92BE6999300F09A17 /* Linear */,
+				507D24272B94F83B00FCCB6F /* Circular */,
 			);
 			path = ProgressBar;
 			sourceTree = "<group>";
 		};
-		507D24272B94F83B00FCCB6F /* CircularProgressBar */ = {
+		507D24272B94F83B00FCCB6F /* Circular */ = {
 			isa = PBXGroup;
 			children = (
 				507D24282B94F85D00FCCB6F /* CircularProgressBar.swift */,
+				5013FD7F2BE12E010099A07C /* NewCircularProgressView.swift */,
 			);
-			path = CircularProgressBar;
+			path = Circular;
 			sourceTree = "<group>";
 		};
 		507D242C2B94FF0B00FCCB6F /* Onboarding */ = {
@@ -228,9 +254,20 @@
 		508F77B42BDA5A5000FADABC /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				508F77B52BDA5A5700FADABC /* Constants.swift */,
+				508F77B52BDA5A5700FADABC /* Sizes.swift */,
+				50148DF72BE68A5900F09A17 /* Colors.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		508F77D12BDAB2CA00FADABC /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				508F77D42BDAB56800FADABC /* CameraView.swift */,
+				508F77DB2BDC131E00FADABC /* CameraController.swift */,
+				508F77DD2BDC134300FADABC /* CameraViewController.swift */,
+			);
+			path = Camera;
 			sourceTree = "<group>";
 		};
 		50F630532BD58F9700BF7D70 /* Haptic */ = {
@@ -312,8 +349,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				507D24242B94F78A00FCCB6F /* DayButton.swift in Sources */,
+				50148DF82BE68A5900F09A17 /* Colors.swift in Sources */,
 				502E553F2BAD9E4B00C2A7F2 /* PushupsView.swift in Sources */,
 				507D24132B94F75900FCCB6F /* PushUpsApp.swift in Sources */,
+				5013FD802BE12E010099A07C /* NewCircularProgressView.swift in Sources */,
+				508F77DE2BDC134300FADABC /* CameraViewController.swift in Sources */,
+				508F77D52BDAB56800FADABC /* CameraView.swift in Sources */,
 				507D242F2B94FF2200FCCB6F /* OnboardingView.swift in Sources */,
 				507D242B2B94FA2500FCCB6F /* HomeView.swift in Sources */,
 				508F77B22BDA55F200FADABC /* xMark.swift in Sources */,
@@ -322,9 +363,12 @@
 				505FD9512BA46E8F00C0B306 /* HomeViewModel.swift in Sources */,
 				CEFA9D052BD52ACB001346CE /* PushupsViewModel.swift in Sources */,
 				507D24292B94F85D00FCCB6F /* CircularProgressBar.swift in Sources */,
-				508F77B62BDA5A5700FADABC /* Constants.swift in Sources */,
+				508F77B62BDA5A5700FADABC /* Sizes.swift in Sources */,
 				50F630562BD58FAB00BF7D70 /* HapticManager.swift in Sources */,
+				50148DFB2BE699A600F09A17 /* LinearProgressBar.swift in Sources */,
+				508F77DC2BDC131E00FADABC /* CameraController.swift in Sources */,
 				507D24312B9503AF00FCCB6F /* HowManyPushupsView.swift in Sources */,
+				50148DF62BE6823200F09A17 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

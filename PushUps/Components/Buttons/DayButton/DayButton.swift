@@ -29,7 +29,7 @@ struct DayButton: View {
                 }
                 .padding()
                 
-                CircularProgressBar(progress: calculateProgress(), color: homeViewModel.updateDayColor(dayID: dayIndex))
+                CircularProgressBar(progress: calculateProgress(), color: homeViewModel.updateDayColor(dayID: dayIndex), lineWidth: 10)
                     .foregroundStyle(.white)
             }
             .padding()

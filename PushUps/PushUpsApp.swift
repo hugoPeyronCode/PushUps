@@ -12,6 +12,9 @@ struct PushUpsApp: App {
     var body: some Scene {
         WindowGroup {
             HomeView()
+                .onAppear{
+                    HapticManager.shared.prepareHaptic()
+                }
         }
     }
 }

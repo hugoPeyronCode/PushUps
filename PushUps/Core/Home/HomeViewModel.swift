@@ -17,7 +17,7 @@ enum DayStatus {
 class HomeViewModel: ObservableObject {
     @Published var days: [Day] = []
     @Published var currentDay = 0
-    @Published var userGoal: Int = 50 {
+    @Published var userGoal: Int = 10 {
          didSet {
              updateGoals()
          }
@@ -97,7 +97,7 @@ class HomeViewModel: ObservableObject {
         let goal = days[dayID].goal
         
         if count > goal {
-            return .yellow
+            return .green
         } else if dayID == currentDay && count == goal {
             return .green
         } else if dayID == currentDay {

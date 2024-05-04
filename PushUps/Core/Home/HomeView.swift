@@ -18,54 +18,30 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                ScrollView {
-                    ScrollViewReader { value in
-                        LazyVStack(spacing: 10) {
-                            ForEach(viewModel.days) { day in
-                                DayButton(homeViewModel: viewModel, dayIndex: day.id)
-                                    .onTapGesture {
-                                        if day.id == viewModel.currentDay {
-                                            isNavigatingToPushUpsView.toggle()
-                                        }
-                                    }
-                                RoundedSpacer(color: .gray)
-                            }
-                        }
-                        .offset(y: 60)
-                        .onAppear {
-                            scrollTarget = viewModel.currentDay
-                        }
-                        .onChange(of: scrollTarget) { target, uselessArguement in
-                            if let target = target {
-                                withAnimation {
-                                    value.scrollTo(target, anchor: .center)
-                                }
-                            }
-                        }
-                        
-                    }
-                }
-
+                
+                ScrollingButtons
                 
                 VStack {
                     Header
-                    Text(viewModel.currentDay.description)
-
-                    Spacer()
                     
-                    HStack(spacing: 20){
-                        focusButton
-                        saveDay
-                        resetToTodayButton
-                        changeDateButton
+                    HStack {
+                        VStack {
+                            focusButton
+                            saveDay
+                            resetToTodayButton
+                            changeDateButton
+                        }
+                        Spacer()
                     }
+                    
+                    Spacer()
                     
                     GoToPushupViewButton
                     
                 }
             }
             .fullScreenCover(isPresented: $isNavigatingToPushUpsView) {
-                PushupsView(dayIndex: viewModel.currentDay, homeViewModel: viewModel)
+                PushupsView(homeViewModel: viewModel, dayIndex: viewModel.currentDay)
             }
             .sheet(isPresented: $showingDatePicker) {
                 DatePicker("Select Start Date", selection: $selectedDate, displayedComponents: .date)
@@ -86,10 +62,8 @@ struct HomeView: View {
             Text("\(100 - viewModel.currentDay) Days Left")
                 .font(.title)
                 .bold()
-            ProgressView("", value: viewModel.progress)
-                .tint(.green)
-                .progressViewStyle(.linear)
-                .padding(.horizontal,2)
+            
+            LinearProgressBar(viewModel.progress, color: .green, cornerRadius: 0)
         }
         .background(.thinMaterial)
     }
@@ -97,6 +71,7 @@ struct HomeView: View {
     var GoToPushupViewButton: some View {
         Button {
             isNavigatingToPushUpsView.toggle()
+            HapticManager.shared.generateFeedback(for: .successStrong)
         } label: {
             RoundedRectangle(cornerRadius: 25)
                 .frame(maxHeight: 100)
@@ -115,7 +90,7 @@ struct HomeView: View {
     }
     
     var focusButton: some View {
-        Button("Focus") {
+        Button {
             // Reset the target to ensure SwiftUI sees a change
             scrollTarget = nil
             // Now set the target which triggers the scroll
@@ -123,11 +98,14 @@ struct HomeView: View {
                 scrollTarget = viewModel.currentDay
                 print(viewModel.currentDay)
             }
+        } label: {
+            Image(systemName: "target")
+                .font(.title)
+                .padding(10)
+                .foregroundStyle(.blue)
+                .background(.ultraThinMaterial)
+                .cornerRadius(150)
         }
-        .padding()
-        .foregroundStyle(.blue)
-        .background(.ultraThinMaterial)
-        .cornerRadius(15)
     }
     
     var saveDay : some View {
@@ -160,6 +138,39 @@ struct HomeView: View {
         .cornerRadius(15)
     }
 
+}
+
+extension HomeView {
+    var ScrollingButtons: some View {
+        ScrollView {
+            ScrollViewReader { value in
+                LazyVStack(spacing: 10) {
+                    ForEach(viewModel.days) { day in
+                        DayButton(homeViewModel: viewModel, dayIndex: day.id)
+                            .onTapGesture {
+                                if day.id == viewModel.currentDay {
+                                    isNavigatingToPushUpsView.toggle()
+                                }
+                            }
+                        RoundedSpacer(color: .gray)
+                    }
+                }
+                .offset(y: 60)
+                .onAppear {
+                    scrollTarget = viewModel.currentDay
+                }
+                .onChange(of: scrollTarget) { target, uselessArguement in
+                    HapticManager.shared.generateFeedback(for: .successLight)
+                    if let target = target {
+                        withAnimation {
+                            value.scrollTo(target, anchor: .center)
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
 }
 
 #Preview {

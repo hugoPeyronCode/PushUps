@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Day: Identifiable, Codable {
     let id: Int
