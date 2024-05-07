@@ -97,7 +97,7 @@ class HomeViewModel: ObservableObject {
 
         let day = days[dayID]
         if day.pushupsCount > day.goal {
-            return .green
+            return .purple
         } else if dayID == currentDay && day.pushupsCount == day.goal {
             return .green
         } else if dayID == currentDay {

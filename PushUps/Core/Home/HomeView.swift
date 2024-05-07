@@ -26,7 +26,6 @@ struct HomeView: View {
                     .opacity(0.3)
                     .ignoresSafeArea()
                 
-                
                 VStack {
                     ScrollingButtons
                 }
@@ -79,13 +78,14 @@ struct HomeView: View {
     
     var Header : some View {
         VStack {
-            Text("99 Days")
+            Text("99 Days left")
                 .fontDesign(.monospaced)
                 .font(.title)
                 .bold()
             
             ProgressView(value: viewModel.progress)
-                .padding()
+                .padding(.horizontal,2)
+                .tint(.green)
 //            LinearProgressBar(viewModel.progress, color: .green, cornerRadius: 0)
         }
         .background(.thinMaterial)
@@ -191,7 +191,7 @@ extension HomeView {
             ScrollViewReader { value in
                 LazyVStack(spacing: 10) {
                     ForEach(viewModel.days) { day in
-                        DayButtonSquareTest(homeViewModel: viewModel, dayIndex: day.id, strokeWidth: day.id == viewModel.currentDay ? 2 : 1)
+                        DayButtonSquareTest(homeViewModel: viewModel, dayIndex: day.id)
                             .onTapGesture {
                                 if day.id == viewModel.currentDay {
                                     isNavigatingToPushUpsView.toggle()
@@ -200,7 +200,7 @@ extension HomeView {
                         RoundedSpacer(color: .gray)
                     }
                 }
-                .offset(y: 10)
+                .offset(y: 100)
                 .onAppear {
                     scrollTarget = viewModel.currentDay
                 }

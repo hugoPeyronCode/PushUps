@@ -11,22 +11,12 @@ struct DayButtonSquareTest: View {
     
     @ObservedObject var homeViewModel : HomeViewModel
     let dayIndex : Int
-    let strokeWidth: CGFloat
-    
-    init(homeViewModel: HomeViewModel, dayIndex: Int, strokeWidth: CGFloat) {
-        self.homeViewModel = homeViewModel
-        self.dayIndex = dayIndex
-        self.strokeWidth = strokeWidth
-    }
-    
-    init(homeViewModel: HomeViewModel, dayIndex: Int) {
-        self.homeViewModel = homeViewModel
-        self.dayIndex = dayIndex
-        self.strokeWidth = 1
-    }
-    
     
     var body: some View {
+        
+        let color = homeViewModel.updateDayColor(dayID: dayIndex)
+        let isToday = homeViewModel.currentDay == dayIndex
+        
         // background
         RoundedRectangle(cornerRadius: 35)
             .foregroundStyle(.gray.opacity(0.1))
@@ -35,8 +25,9 @@ struct DayButtonSquareTest: View {
                 //Stroke
                     RoundedRectangle(cornerRadius: 35)
     //                    .stroke(lineWidth: 5)
-                    .stroke(lineWidth: strokeWidth)
-                    .foregroundStyle(homeViewModel.updateDayColor(dayID: dayIndex))
+                    .stroke(lineWidth: isToday ? 3 : 2)
+                    .foregroundStyle(isToday ? .blue : color)
+
             }
             .overlay(alignment: .center) {
                 VStack {
@@ -49,11 +40,13 @@ struct DayButtonSquareTest: View {
                         Spacer()
                         Symbol
                     }
-                    .foregroundStyle(.primary.opacity(0.6))
+                    .foregroundStyle(color)
                     .padding()
                     
                 }
             }
+            .foregroundStyle(color)
+
             .padding(.horizontal)
     }
 }
