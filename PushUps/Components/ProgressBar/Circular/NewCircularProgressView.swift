@@ -30,7 +30,7 @@ struct NewCircularProgressView: View {
 
             Circle()
                 .stroke(lineWidth: lineWidth)
-                .foregroundStyle(gradient.opacity(0.5))
+                .foregroundStyle(.white)
                 .shadow(color: .black, radius: 0.5)
 
             Circle()

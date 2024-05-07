@@ -11,6 +11,8 @@
 		50148DF62BE6823200F09A17 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50148DF52BE6823200F09A17 /* User.swift */; };
 		50148DF82BE68A5900F09A17 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50148DF72BE68A5900F09A17 /* Colors.swift */; };
 		50148DFB2BE699A600F09A17 /* LinearProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50148DFA2BE699A600F09A17 /* LinearProgressBar.swift */; };
+		50148DFD2BE6BE8600F09A17 /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50148DFC2BE6BE8600F09A17 /* HeaderViewModel.swift */; };
+		50148DFF2BE825F400F09A17 /* DayButtonSquareTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50148DFE2BE825F400F09A17 /* DayButtonSquareTest.swift */; };
 		502E553F2BAD9E4B00C2A7F2 /* PushupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502E553E2BAD9E4B00C2A7F2 /* PushupsView.swift */; };
 		505FD9492BA4658B00C0B306 /* RoundedSpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505FD9482BA4658B00C0B306 /* RoundedSpacer.swift */; };
 		505FD94F2BA468CB00C0B306 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505FD94E2BA468CB00C0B306 /* Day.swift */; };
@@ -37,6 +39,8 @@
 		50148DF52BE6823200F09A17 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		50148DF72BE68A5900F09A17 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		50148DFA2BE699A600F09A17 /* LinearProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearProgressBar.swift; sourceTree = "<group>"; };
+		50148DFC2BE6BE8600F09A17 /* HeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModel.swift; sourceTree = "<group>"; };
+		50148DFE2BE825F400F09A17 /* DayButtonSquareTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayButtonSquareTest.swift; sourceTree = "<group>"; };
 		502E553E2BAD9E4B00C2A7F2 /* PushupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushupsView.swift; sourceTree = "<group>"; };
 		505FD9482BA4658B00C0B306 /* RoundedSpacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedSpacer.swift; sourceTree = "<group>"; };
 		505FD94B2BA4673C00C0B306 /* PROJECT NOTES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "PROJECT NOTES.md"; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 			children = (
 				507D242A2B94FA2500FCCB6F /* HomeView.swift */,
 				505FD9502BA46E8F00C0B306 /* HomeViewModel.swift */,
+				50148DFC2BE6BE8600F09A17 /* HeaderViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				507D24232B94F78A00FCCB6F /* DayButton.swift */,
+				50148DFE2BE825F400F09A17 /* DayButtonSquareTest.swift */,
 			);
 			path = DayButton;
 			sourceTree = "<group>";
@@ -352,6 +358,7 @@
 				50148DF82BE68A5900F09A17 /* Colors.swift in Sources */,
 				502E553F2BAD9E4B00C2A7F2 /* PushupsView.swift in Sources */,
 				507D24132B94F75900FCCB6F /* PushUpsApp.swift in Sources */,
+				50148DFD2BE6BE8600F09A17 /* HeaderViewModel.swift in Sources */,
 				5013FD802BE12E010099A07C /* NewCircularProgressView.swift in Sources */,
 				508F77DE2BDC134300FADABC /* CameraViewController.swift in Sources */,
 				508F77D52BDAB56800FADABC /* CameraView.swift in Sources */,
@@ -369,6 +376,7 @@
 				508F77DC2BDC131E00FADABC /* CameraController.swift in Sources */,
 				507D24312B9503AF00FCCB6F /* HowManyPushupsView.swift in Sources */,
 				50148DF62BE6823200F09A17 /* User.swift in Sources */,
+				50148DFF2BE825F400F09A17 /* DayButtonSquareTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,7 +519,6 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -542,7 +549,6 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

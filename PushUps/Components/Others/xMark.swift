@@ -21,7 +21,7 @@ struct xMark: View {
                 Button(action: {action()}, label: {
                     Image(systemName: "xmark")
                         .bold()
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.foreground)
                 })
                 .padding()
                 Spacer()

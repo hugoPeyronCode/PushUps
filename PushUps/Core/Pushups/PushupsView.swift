@@ -58,7 +58,6 @@ struct PushupsView: View {
                 }
                 .frame(width: SizeConstants.screenWidth / 1.4 )
                 
-                
                 if cameraManager.isFacingUpward {
                     Spacer()
                     VStack{}
@@ -85,6 +84,7 @@ struct PushupsView: View {
                 cameraManager.pushupCount = homeViewModel.days[dayIndex].pushupsCount
             }
         }
+        .fontDesign(.monospaced)
     }
 }
 

@@ -22,7 +22,7 @@ struct RoundedSpacer: View {
     
     init(color: Color) {
         self.color = color
-        self.width = 10
+        self.width = 2
         self.height = 50
         self.cornerRadius = 25
     }
@@ -35,5 +35,5 @@ struct RoundedSpacer: View {
 }
 
 #Preview {
-    RoundedSpacer(color: .gray)
+    RoundedSpacer(color: .primary.opacity(0.4), width: 2, height: 50, cornerRadius: 25)
 }

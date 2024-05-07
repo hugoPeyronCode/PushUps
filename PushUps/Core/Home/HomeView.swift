@@ -15,15 +15,31 @@ struct HomeView: View {
     @State private var isNavigatingToPushUpsView = false
     @State private var scrollTarget: Int? = nil
     
+    // Manage the position of the scrollingButton view
+    @State private var position: Position = .center
+    
     var body: some View {
         NavigationView {
             ZStack {
                 
-                ScrollingButtons
+                Color(.gray)
+                    .opacity(0.3)
+                    .ignoresSafeArea()
+                
+                
+                VStack {
+                    ScrollingButtons
+                }
                 
                 VStack {
                     Header
+                    Spacer()
+                }
+                
+                VStack {
                     
+                    Spacer()
+
                     HStack {
                         VStack {
                             focusButton
@@ -40,9 +56,13 @@ struct HomeView: View {
                     
                 }
             }
-            .fullScreenCover(isPresented: $isNavigatingToPushUpsView) {
+            .fullScreenCover(isPresented: $isNavigatingToPushUpsView, onDismiss: {
+                // Save the progression
+                viewModel.saveDays()
+            }) {
                 PushupsView(homeViewModel: viewModel, dayIndex: viewModel.currentDay)
             }
+
             .sheet(isPresented: $showingDatePicker) {
                 DatePicker("Select Start Date", selection: $selectedDate, displayedComponents: .date)
                     .datePickerStyle(WheelDatePickerStyle())
@@ -59,13 +79,20 @@ struct HomeView: View {
     
     var Header : some View {
         VStack {
-            Text("\(100 - viewModel.currentDay) Days Left")
+            Text("99 Days")
+                .fontDesign(.monospaced)
                 .font(.title)
                 .bold()
             
-            LinearProgressBar(viewModel.progress, color: .green, cornerRadius: 0)
+            ProgressView(value: viewModel.progress)
+                .padding()
+//            LinearProgressBar(viewModel.progress, color: .green, cornerRadius: 0)
         }
         .background(.thinMaterial)
+        .foregroundStyle(.gray)
+        .onTapGesture {
+            // Tap to change the header info
+        }
     }
     
     var GoToPushupViewButton: some View {
@@ -73,17 +100,18 @@ struct HomeView: View {
             isNavigatingToPushUpsView.toggle()
             HapticManager.shared.generateFeedback(for: .successStrong)
         } label: {
-            RoundedRectangle(cornerRadius: 25)
+            RoundedRectangle(cornerRadius: 55)
                 .frame(maxHeight: 100)
                 .foregroundStyle(.pink)
                 .overlay {
                     HStack {
-                        Text("Do Some Pushups!".uppercased())
-                        Image(systemName: "figure.strengthtraining.traditional")
+                        Text("Push".uppercased())
+//                        Image(systemName: "figure.strengthtraining.traditional")
                     }
                     .foregroundStyle(.white)
                     .fontWeight(.black)
                     .font(.title)
+                    .fontDesign(.monospaced)
                 }
                 .padding()
         }
@@ -137,7 +165,24 @@ struct HomeView: View {
         .background(.ultraThinMaterial)
         .cornerRadius(15)
     }
+}
 
+extension HomeViewModel {
+    // Computed property to get the total number of pushups
+    var totalPushUps: Int {
+        days.reduce(0) { $0 + $1.pushupsCount }
+    }
+    
+    // Calculate the number of days missed
+    var daysMissed: Int {
+        // Considering 'missed' as days past the 'currentDay' with pushups count less than the goal
+        days.prefix(currentDay).filter { $0.pushupsCount < $0.goal }.count
+    }
+
+    // Calculate the maximum number of pushups done in one day
+    var maxPushUpsInOneDay: Int {
+        days.map { $0.pushupsCount }.max() ?? 0
+    }
 }
 
 extension HomeView {
@@ -146,7 +191,7 @@ extension HomeView {
             ScrollViewReader { value in
                 LazyVStack(spacing: 10) {
                     ForEach(viewModel.days) { day in
-                        DayButton(homeViewModel: viewModel, dayIndex: day.id)
+                        DayButtonSquareTest(homeViewModel: viewModel, dayIndex: day.id, strokeWidth: day.id == viewModel.currentDay ? 2 : 1)
                             .onTapGesture {
                                 if day.id == viewModel.currentDay {
                                     isNavigatingToPushUpsView.toggle()
@@ -155,7 +200,7 @@ extension HomeView {
                         RoundedSpacer(color: .gray)
                     }
                 }
-                .offset(y: 60)
+                .offset(y: 10)
                 .onAppear {
                     scrollTarget = viewModel.currentDay
                 }
@@ -172,6 +217,7 @@ extension HomeView {
         }
     }
 }
+
 
 #Preview {
     HomeView()

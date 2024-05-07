@@ -11,6 +11,8 @@ import SwiftUI
 struct PushUpsApp: App {
     var body: some Scene {
         WindowGroup {
+            
+//            TestView()
             HomeView()
                 .onAppear{
                     HapticManager.shared.prepareHaptic()

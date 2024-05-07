@@ -151,7 +151,7 @@ extension UIImage {
         UIGraphicsEndImageContext()
         
         let blackPixelCount = analyzePixelsForCloseProximity(grayscaleImage)
-        print(blackPixelCount)
+//        print(blackPixelCount)
         
         // Analyze pixels
         let threshold = analyzePixelsForCloseProximity(grayscaleImage)
@@ -232,7 +232,7 @@ extension UIImage {
         let blackPixelCount = histogram[0..<128].reduce(0, +)
         let totalPixels = width * height
 
-        print("Black Pixel Count: \(blackPixelCount) out of \(totalPixels)")
+//        print("Black Pixel Count: \(blackPixelCount) out of \(totalPixels)")
 
         return Double(blackPixelCount) / Double(totalPixels)
     }

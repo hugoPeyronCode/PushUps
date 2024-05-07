@@ -43,7 +43,6 @@ class HomeViewModel: ObservableObject {
          }
      }
     
-    
     // Handle the progress bar in the header
     var progress: Double {
         // Ensure division by zero is handled by returning 0 progress if totalDays is 0
@@ -92,22 +91,22 @@ class HomeViewModel: ObservableObject {
     }
         
     func updateDayColor(dayID: Int) -> Color {
-        
-        let count = days[dayID].pushupsCount
-        let goal = days[dayID].goal
-        
-        if count > goal {
+        guard dayID >= 0 && dayID < days.count else {
+            return .gray // Return a default color if the index is out of bounds
+        }
+
+        let day = days[dayID]
+        if day.pushupsCount > day.goal {
             return .green
-        } else if dayID == currentDay && count == goal {
+        } else if dayID == currentDay && day.pushupsCount == day.goal {
             return .green
         } else if dayID == currentDay {
             return .blue
-        } else if dayID < currentDay && count == goal {
+        } else if dayID < currentDay && day.pushupsCount == day.goal {
             return .green
-        } else if dayID < currentDay && count < goal {
-            return.red
-        }
-        else {
+        } else if dayID < currentDay && day.pushupsCount < day.goal {
+            return .red
+        } else {
             return .gray
         }
     }
