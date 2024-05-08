@@ -23,7 +23,7 @@ class PushUpsViewModel: NSObject, ObservableObject, AVCaptureDepthDataOutputDele
     @Published var distanceLabel: String = "Unknown"
     @Published var autoCounter: Bool = false
     @Published var blackPixelCount: Double = 0.0
-    
+        
     @Published var pushupCount: Int = 0
     
     @Published var proximity: Double = 0.0
@@ -116,7 +116,7 @@ class PushUpsViewModel: NSObject, ObservableObject, AVCaptureDepthDataOutputDele
         }
         
         // Check if the current state history matches the required sequence
-        if stateHistory == ["Mid", "Close", "Mid"] {
+        if stateHistory == ["Far", "Close", "Far"] {
             withAnimation {
                 pushupCount += 1
             }
@@ -159,38 +159,11 @@ extension UIImage {
         if threshold > 0.5 {
             label = "Close"
         } else {
-            label = "Mid"
+            label = "Far"
         }
         completion(image, label, blackPixelCount)
         
     }
-    
-//    private static func analyzePixelsForCloseProximity(_ image: UIImage?) -> Double {
-//        guard let cgImage = image?.cgImage else { return 0.0 }
-//        let width = cgImage.width
-//        let height = cgImage.height
-//        let colorSpace = CGColorSpaceCreateDeviceGray()
-//        
-//        guard let context = CGContext(data: nil, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width, space: colorSpace, bitmapInfo: 0) else { return 0.0 }
-//        context.draw(cgImage, in: CGRect(x: 0, y: 0, width: width, height: height))
-//        
-//        guard let pixelData = context.data else { return 0.0 }
-//        
-//        var blackPixelCount = 0
-//        var totalPixels = 0
-//        
-//        for x in 0 ..< width {
-//            for y in 0 ..< height {
-//                let offset = y * width + x
-//                let pixel = pixelData.load(fromByteOffset: offset, as: UInt8.self)
-//                if pixel < 128 {  // Assuming black pixels are those less than mid-gray
-//                    blackPixelCount += 1
-//                }
-//                totalPixels += 1
-//            }
-//        }
-//        return Double(blackPixelCount) / Double(totalPixels)
-//    }
     
     private static func analyzePixelsForCloseProximity(_ image: UIImage?) -> Double {
         guard let cgImage = image?.cgImage else {

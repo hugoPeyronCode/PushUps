@@ -8,12 +8,6 @@
 import Foundation
 import SwiftUI
 
-enum DayStatus {
-    case passed
-    case current
-    case toCome
-}
-
 class HomeViewModel: ObservableObject {
     @Published var days: [Day] = []
     @Published var currentDay = 0
@@ -97,7 +91,7 @@ class HomeViewModel: ObservableObject {
 
         let day = days[dayID]
         if day.pushupsCount > day.goal {
-            return .purple
+            return .green
         } else if dayID == currentDay && day.pushupsCount == day.goal {
             return .green
         } else if dayID == currentDay {
@@ -125,7 +119,6 @@ class HomeViewModel: ObservableObject {
         // Save the newly initialized days to UserDefaults
         saveDays()
     }
-
     
     func saveDays() {
         let encoder = JSONEncoder()

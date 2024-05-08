@@ -12,19 +12,22 @@
 		50148DF82BE68A5900F09A17 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50148DF72BE68A5900F09A17 /* Colors.swift */; };
 		50148DFB2BE699A600F09A17 /* LinearProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50148DFA2BE699A600F09A17 /* LinearProgressBar.swift */; };
 		50148DFD2BE6BE8600F09A17 /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50148DFC2BE6BE8600F09A17 /* HeaderViewModel.swift */; };
-		50148DFF2BE825F400F09A17 /* DayButtonSquareTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50148DFE2BE825F400F09A17 /* DayButtonSquareTest.swift */; };
+		50148DFF2BE825F400F09A17 /* DayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50148DFE2BE825F400F09A17 /* DayButton.swift */; };
 		502E553F2BAD9E4B00C2A7F2 /* PushupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502E553E2BAD9E4B00C2A7F2 /* PushupsView.swift */; };
 		505FD9492BA4658B00C0B306 /* RoundedSpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505FD9482BA4658B00C0B306 /* RoundedSpacer.swift */; };
 		505FD94F2BA468CB00C0B306 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505FD94E2BA468CB00C0B306 /* Day.swift */; };
 		505FD9512BA46E8F00C0B306 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505FD9502BA46E8F00C0B306 /* HomeViewModel.swift */; };
+		507B54B62BEA64AC00C250EB /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507B54B52BEA64AC00C250EB /* ConfettiView.swift */; };
+		507B54B92BEA64FE00C250EB /* ConfettiTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507B54B82BEA64FE00C250EB /* ConfettiTestView.swift */; };
 		507D24132B94F75900FCCB6F /* PushUpsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D24122B94F75900FCCB6F /* PushUpsApp.swift */; };
 		507D24172B94F75B00FCCB6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 507D24162B94F75B00FCCB6F /* Assets.xcassets */; };
 		507D241A2B94F75B00FCCB6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 507D24192B94F75B00FCCB6F /* Preview Assets.xcassets */; };
-		507D24242B94F78A00FCCB6F /* DayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D24232B94F78A00FCCB6F /* DayButton.swift */; };
+		507D24242B94F78A00FCCB6F /* DayButtonOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D24232B94F78A00FCCB6F /* DayButtonOld.swift */; };
 		507D24292B94F85D00FCCB6F /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D24282B94F85D00FCCB6F /* CircularProgressBar.swift */; };
 		507D242B2B94FA2500FCCB6F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D242A2B94FA2500FCCB6F /* HomeView.swift */; };
 		507D242F2B94FF2200FCCB6F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D242E2B94FF2200FCCB6F /* OnboardingView.swift */; };
 		507D24312B9503AF00FCCB6F /* HowManyPushupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D24302B9503AF00FCCB6F /* HowManyPushupsView.swift */; };
+		508EC1932BEBED580015D7B5 /* ColorsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508EC1922BEBED580015D7B5 /* ColorsExtension.swift */; };
 		508F77B22BDA55F200FADABC /* xMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508F77B12BDA55F200FADABC /* xMark.swift */; };
 		508F77B62BDA5A5700FADABC /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508F77B52BDA5A5700FADABC /* Sizes.swift */; };
 		508F77D52BDAB56800FADABC /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508F77D42BDAB56800FADABC /* CameraView.swift */; };
@@ -40,21 +43,24 @@
 		50148DF72BE68A5900F09A17 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		50148DFA2BE699A600F09A17 /* LinearProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearProgressBar.swift; sourceTree = "<group>"; };
 		50148DFC2BE6BE8600F09A17 /* HeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModel.swift; sourceTree = "<group>"; };
-		50148DFE2BE825F400F09A17 /* DayButtonSquareTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayButtonSquareTest.swift; sourceTree = "<group>"; };
+		50148DFE2BE825F400F09A17 /* DayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayButton.swift; sourceTree = "<group>"; };
 		502E553E2BAD9E4B00C2A7F2 /* PushupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushupsView.swift; sourceTree = "<group>"; };
 		505FD9482BA4658B00C0B306 /* RoundedSpacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedSpacer.swift; sourceTree = "<group>"; };
 		505FD94B2BA4673C00C0B306 /* PROJECT NOTES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "PROJECT NOTES.md"; sourceTree = "<group>"; };
 		505FD94E2BA468CB00C0B306 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		505FD9502BA46E8F00C0B306 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		507B54B52BEA64AC00C250EB /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
+		507B54B82BEA64FE00C250EB /* ConfettiTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiTestView.swift; sourceTree = "<group>"; };
 		507D240F2B94F75900FCCB6F /* PushUps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushUps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		507D24122B94F75900FCCB6F /* PushUpsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushUpsApp.swift; sourceTree = "<group>"; };
 		507D24162B94F75B00FCCB6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		507D24192B94F75B00FCCB6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		507D24232B94F78A00FCCB6F /* DayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayButton.swift; sourceTree = "<group>"; };
+		507D24232B94F78A00FCCB6F /* DayButtonOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayButtonOld.swift; sourceTree = "<group>"; };
 		507D24282B94F85D00FCCB6F /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
 		507D242A2B94FA2500FCCB6F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		507D242E2B94FF2200FCCB6F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		507D24302B9503AF00FCCB6F /* HowManyPushupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowManyPushupsView.swift; sourceTree = "<group>"; };
+		508EC1922BEBED580015D7B5 /* ColorsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsExtension.swift; sourceTree = "<group>"; };
 		508F77B12BDA55F200FADABC /* xMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xMark.swift; sourceTree = "<group>"; };
 		508F77B52BDA5A5700FADABC /* Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
 		508F77D42BDAB56800FADABC /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
@@ -128,10 +134,28 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		507B54B32BEA648D00C250EB /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				507B54B42BEA649600C250EB /* Confettis */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		507B54B42BEA649600C250EB /* Confettis */ = {
+			isa = PBXGroup;
+			children = (
+				507B54B52BEA64AC00C250EB /* ConfettiView.swift */,
+				507B54B82BEA64FE00C250EB /* ConfettiTestView.swift */,
+			);
+			path = Confettis;
+			sourceTree = "<group>";
+		};
 		507D24062B94F75900FCCB6F = {
 			isa = PBXGroup;
 			children = (
 				507D24112B94F75900FCCB6F /* PushUps */,
+				507D24162B94F75B00FCCB6F /* Assets.xcassets */,
 				505FD94A2BA4670800C0B306 /* Notes */,
 				507D24102B94F75900FCCB6F /* Products */,
 			);
@@ -148,12 +172,12 @@
 		507D24112B94F75900FCCB6F /* PushUps */ = {
 			isa = PBXGroup;
 			children = (
+				508EC1912BEBED490015D7B5 /* Extensions */,
 				507D24122B94F75900FCCB6F /* PushUpsApp.swift */,
 				507D242C2B94FF0B00FCCB6F /* Onboarding */,
 				507D24212B94F76D00FCCB6F /* Components */,
 				507D24202B94F76900FCCB6F /* Core */,
 				505FD94C2BA468B700C0B306 /* Models */,
-				507D24162B94F75B00FCCB6F /* Assets.xcassets */,
 				508F77B02BDA558B00FADABC /* Manager */,
 				508F77B32BDA5A4A00FADABC /* Tools */,
 				507D24182B94F75B00FCCB6F /* Preview Content */,
@@ -181,6 +205,7 @@
 		507D24212B94F76D00FCCB6F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				507B54B32BEA648D00C250EB /* Animations */,
 				508F77D12BDAB2CA00FADABC /* Camera */,
 				505FD9472BA4657600C0B306 /* Others */,
 				507D24262B94F83500FCCB6F /* ProgressBar */,
@@ -192,8 +217,8 @@
 		507D24222B94F77800FCCB6F /* DayButton */ = {
 			isa = PBXGroup;
 			children = (
-				507D24232B94F78A00FCCB6F /* DayButton.swift */,
-				50148DFE2BE825F400F09A17 /* DayButtonSquareTest.swift */,
+				507D24232B94F78A00FCCB6F /* DayButtonOld.swift */,
+				50148DFE2BE825F400F09A17 /* DayButton.swift */,
 			);
 			path = DayButton;
 			sourceTree = "<group>";
@@ -239,6 +264,14 @@
 				507D24302B9503AF00FCCB6F /* HowManyPushupsView.swift */,
 			);
 			path = HowManyPushUpsView;
+			sourceTree = "<group>";
+		};
+		508EC1912BEBED490015D7B5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				508EC1922BEBED580015D7B5 /* ColorsExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		508F77B02BDA558B00FADABC /* Manager */ = {
@@ -354,11 +387,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				507D24242B94F78A00FCCB6F /* DayButton.swift in Sources */,
+				507D24242B94F78A00FCCB6F /* DayButtonOld.swift in Sources */,
 				50148DF82BE68A5900F09A17 /* Colors.swift in Sources */,
 				502E553F2BAD9E4B00C2A7F2 /* PushupsView.swift in Sources */,
 				507D24132B94F75900FCCB6F /* PushUpsApp.swift in Sources */,
 				50148DFD2BE6BE8600F09A17 /* HeaderViewModel.swift in Sources */,
+				507B54B92BEA64FE00C250EB /* ConfettiTestView.swift in Sources */,
 				5013FD802BE12E010099A07C /* NewCircularProgressView.swift in Sources */,
 				508F77DE2BDC134300FADABC /* CameraViewController.swift in Sources */,
 				508F77D52BDAB56800FADABC /* CameraView.swift in Sources */,
@@ -366,6 +400,7 @@
 				507D242B2B94FA2500FCCB6F /* HomeView.swift in Sources */,
 				508F77B22BDA55F200FADABC /* xMark.swift in Sources */,
 				505FD9492BA4658B00C0B306 /* RoundedSpacer.swift in Sources */,
+				507B54B62BEA64AC00C250EB /* ConfettiView.swift in Sources */,
 				505FD94F2BA468CB00C0B306 /* Day.swift in Sources */,
 				505FD9512BA46E8F00C0B306 /* HomeViewModel.swift in Sources */,
 				CEFA9D052BD52ACB001346CE /* PushupsViewModel.swift in Sources */,
@@ -376,7 +411,8 @@
 				508F77DC2BDC131E00FADABC /* CameraController.swift in Sources */,
 				507D24312B9503AF00FCCB6F /* HowManyPushupsView.swift in Sources */,
 				50148DF62BE6823200F09A17 /* User.swift in Sources */,
-				50148DFF2BE825F400F09A17 /* DayButtonSquareTest.swift in Sources */,
+				50148DFF2BE825F400F09A17 /* DayButton.swift in Sources */,
+				508EC1932BEBED580015D7B5 /* ColorsExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

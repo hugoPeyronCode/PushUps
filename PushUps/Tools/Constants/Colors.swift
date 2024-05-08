@@ -8,7 +8,14 @@
 import Foundation
 import SwiftUI
 
-struct ColorGradients {
+struct Colors {
+    
+    static var grayBackground : some View {
+        Color(.gray)
+            .opacity(0.3)
+            .ignoresSafeArea()
+    }
+    
     static let premiumGradient = Gradient(colors: [.green, .blue, .purple, .pink])
     static let premiumLinearGradient =  LinearGradient(gradient: premiumGradient, startPoint: .leading, endPoint: .trailing)
     static let white = LinearGradient(gradient: Gradient(colors: [.white, .white]) , startPoint: .leading, endPoint: .trailing)

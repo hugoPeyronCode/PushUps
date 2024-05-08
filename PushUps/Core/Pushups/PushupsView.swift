@@ -10,7 +10,7 @@ import SwiftUI
 struct PushupsView: View {
     // View Model
     @ObservedObject var homeViewModel: HomeViewModel
-    @ObservedObject var cameraManager = PushUpsViewModel()
+    @ObservedObject var pushUpsViewModel = PushUpsViewModel()
     
     // Tools
     @Environment(\.dismiss) private var dismiss
@@ -18,70 +18,76 @@ struct PushupsView: View {
     // View Variables
     var dayIndex: Int
     
+    // Confettis
+    @State private var counter : Int = 1
+    @State private var confettiColors: [Color] = [.purple, .primary]
+    
     var body: some View {
+        let count = pushUpsViewModel.pushupCount
+        let goal = homeViewModel.days[dayIndex].goal
+
         NavigationStack {
             
-            VStack {
+            ZStack {
                 
-                Spacer()
+                Colors.grayBackground
                 
-                Text(encouragingText())
-                    .frame(maxHeight: 20)
-                    .bold()
-                    .padding()
-                
-                Spacer()
-                
-                ZStack {
-                    let progress = Double(cameraManager.pushupCount) / Double(homeViewModel.days[dayIndex].goal)
+                VStack {
                     
-                                        
-                    CircularProgressViewTest(overallProgress: progress)
-                        .frame(width: SizeConstants.screenWidth / 1.4 )
+                    Spacer()
                     
-                    //                    CircularProgressBar(progress: Double(cameraManager.pushupCount) / Double(homeViewModel.days[dayIndex].goal), color1: colors.0, color2: colors.1, fontSize: .caption2, lineWidth: 30, withText: false)
+                    Text(encouragingText())
+                        .multilineTextAlignment(.center)
+                        .lineLimit(2)
+                        .frame(maxHeight: 70)
+                        .bold()
+                        .padding()
+                        .confettiCannon(counter: $counter, colors: confettiColors)
                     
-                    //CircularProgressBar(progress: Double(cameraManager.pushupCount) / Double(homeViewModel.days[dayIndex].goal), color: .green)
+                    Spacer()
                     
-                    DistanceIndicator
+                    // Push Ups Counter Circle
+                    ZStack {
+                        let progress = Double(count) / Double(goal)
+                                            
+                        CircularProgressViewTest(overallProgress: progress)
+                        
+                        DistanceIndicator
+                        
+                        ProgressInformation
+                        
+                    }
                     
-                    ProgressInformation
+                    if pushUpsViewModel.isFacingUpward {
+                        Spacer()
+                        VStack{}
+                            .frame(maxHeight: SizeConstants.screenHeight / 6)
+                        Spacer()
+                    } else {
+                        Spacer()
+                        PhoneFacingUpWarning
+                            .frame(maxHeight: SizeConstants.screenHeight / 6)
+                        Spacer()
+                    }
                     
-//                    Button {
-//                        withAnimation {
-//                            cameraManager.pushupCount += 1
-//
-//                        }
-//                    } label: {
-//                        Text("+10")
-//                    }
                 }
-                .frame(width: SizeConstants.screenWidth / 1.4 )
-                
-                if cameraManager.isFacingUpward {
-                    Spacer()
-                    VStack{}
-                        .frame(maxHeight: SizeConstants.screenHeight / 6)
-                    Spacer()
-                } else {
-                    Spacer()
-                    PhoneFacingUpWarning
-                        .frame(maxHeight: SizeConstants.screenHeight / 6)
-                    Spacer()
+                .frame(width: SizeConstants.screenWidth * 0.9)
+                .toolbar(content: {
+                    ToolbarItem(placement: .topBarLeading) {
+                        xMark(dismiss)
+                    }
+                })
+                .onDisappear{
+                    homeViewModel.days[dayIndex].pushupsCount = pushUpsViewModel.pushupCount
+                    homeViewModel.saveDays()
                 }
-                
+                .onAppear() {
+                    pushUpsViewModel.pushupCount = homeViewModel.days[dayIndex].pushupsCount
             }
-            .toolbar(content: {
-                ToolbarItem(placement: .topBarLeading) {
-                    xMark(dismiss)
+                .onChange(of: pushUpsViewModel.pushupCount) { _, _ in
+                    triggerConffeti()
                 }
-            })
-            .onDisappear{
-                homeViewModel.saveDays()
-                homeViewModel.days[dayIndex].pushupsCount = cameraManager.pushupCount
-            }
-            .onAppear() {
-                cameraManager.pushupCount = homeViewModel.days[dayIndex].pushupsCount
+                Text(pushUpsViewModel.distanceLabel)
             }
         }
         .fontDesign(.monospaced)
@@ -93,15 +99,15 @@ struct PushupsView: View {
     PushupsView(homeViewModel: HomeViewModel(), dayIndex: 2)
 }
 
-
 extension PushupsView {
-    func changeCircularProgressBarColors() -> (Color, Color) {
-        if cameraManager.pushupCount > homeViewModel.userGoal {
-            return (.yellow, .pink)
-        } else if cameraManager.pushupCount == homeViewModel.userGoal {
-            return (.green, .mint)
+    // Conffetis functions
+    func triggerConffeti() {
+        if pushUpsViewModel.pushupCount == homeViewModel.userGoal || pushUpsViewModel.pushupCount % 10 == 0 {
+            print("Should trigger confetti")
+            counter += 1
+            HapticManager.shared.generateFeedback(for: .successStrong)
         } else {
-            return (.blue, .white)
+            counter += 0
         }
     }
 }
@@ -111,7 +117,7 @@ extension PushupsView {
     var CameraView : some View {
         // Camera
         VStack{
-            if let image = cameraManager.depthImage {
+            if let image = pushUpsViewModel.depthImage {
                 Image(uiImage: image)
                     .resizable()
             }
@@ -120,11 +126,12 @@ extension PushupsView {
     
     var DistanceIndicator: some View {
         let maxScale: CGFloat = 30.0  // Maximum scale factor
-        let dynamicScale = 1 + cameraManager.blackPixelCount * 30
+        let dynamicScale = 1 + pushUpsViewModel.blackPixelCount * 30
         let scale = min(dynamicScale, maxScale)  // Ensure scale does not exceed maxScale
         
         return Circle()
-            .fill(.white.opacity(0.5))
+            .stroke(lineWidth: 0.1)
+            .fill(.black)
             .frame(width: 10, height: 10)  // Fixed size for demonstration
             .scaleEffect(scale)  // Apply the capped scale effect
     }
@@ -150,17 +157,17 @@ extension PushupsView {
     
     var ProgressInformation : some View {
         VStack {
-            Text("\(cameraManager.pushupCount) / \(homeViewModel.days[dayIndex].goal)")
+            Text("\(pushUpsViewModel.pushupCount)")
             // Display goal completion status
         }
         .fontWeight(.black)
-        .font(.title)
+        .font(.largeTitle)
     }
 }
 
 extension PushupsView {
     func encouragingText() -> String {
-        let count = cameraManager.pushupCount
+        let count = pushUpsViewModel.pushupCount
         let goal = homeViewModel.userGoal
         
         let ratio = Double(count) / Double(goal)

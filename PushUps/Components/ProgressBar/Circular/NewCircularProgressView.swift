@@ -11,17 +11,15 @@ struct NewCircularProgressView: View {
     var progress: Double
     let color1: Color
     let color2: Color
-    let fontSize: Font
     let lineWidth: CGFloat
-    let withText: Bool
+    var hasShadow : Bool
     
-    init(progress: Double, color1: Color, color2: Color, fontSize: Font, lineWidth: CGFloat, withText: Bool) {
+    init(progress: Double, color1: Color, color2: Color, lineWidth: CGFloat, hasShadow: Bool) {
         self.progress = progress
         self.color1 = color1
         self.color2 = color2
-        self.fontSize = fontSize
         self.lineWidth = lineWidth
-        self.withText = withText
+        self.hasShadow = hasShadow
     }
 
     var body: some View {
@@ -30,8 +28,9 @@ struct NewCircularProgressView: View {
 
             Circle()
                 .stroke(lineWidth: lineWidth)
-                .foregroundStyle(.white)
-                .shadow(color: .black, radius: 0.5)
+                .foregroundStyle(.thinMaterial)
+                .shadow(color: .gray, radius: hasShadow ? 50 : 1)
+
 
             Circle()
                 .trim(from: 0, to: progress)
@@ -59,18 +58,21 @@ struct CircularProgressViewTest : View {
     }
     
     var body: some View {
+        
+        let size = SizeConstants.screenWidth / 3
+        
         ZStack {
-            NewCircularProgressView(progress: calculateProgress(for: 3), color1: .yellow, color2: .yellow, fontSize: .callout, lineWidth: lineWidth, withText: false)
-                .frame(width: 120)
+            NewCircularProgressView(progress: calculateProgress(for: 3), color1: .pink, color2: .pink, lineWidth: lineWidth, hasShadow: true)
+                .frame(width: size)
 
-            NewCircularProgressView(progress: calculateProgress(for: 2), color1: .blue, color2: .blue, fontSize: .callout, lineWidth: lineWidth, withText: false)
-                .frame(width: 180)
+            NewCircularProgressView(progress: calculateProgress(for: 2), color1: .blue, color2: .blue, lineWidth: lineWidth, hasShadow: true)
+                .frame(width: size + 60)
 
-            NewCircularProgressView(progress: calculateProgress(for: 1), color1: .green, color2: .green, fontSize: .callout, lineWidth: lineWidth, withText: false)
-                .frame(width: 240)
+            NewCircularProgressView(progress: calculateProgress(for: 1), color1: .pink, color2: .pink, lineWidth: lineWidth, hasShadow: true)
+                .frame(width: size + 120)
 
-            NewCircularProgressView(progress: calculateProgress(for: 0), color1: .pink, color2: .pink, fontSize: .callout, lineWidth:lineWidth, withText: false)
-                .frame(width: 300)
+            NewCircularProgressView(progress: calculateProgress(for: 0), color1: .cyan, color2: .cyan, lineWidth:lineWidth, hasShadow: false)
+                .frame(width: size + 180)
         }
         .scaleEffect(scaleEffect)
     }
@@ -83,5 +85,5 @@ struct CircularProgressViewTest : View {
 }
 
 #Preview{
-    CircularProgressViewTest(overallProgress: 0.2)
+    CircularProgressViewTest(overallProgress: 1.2)
 }

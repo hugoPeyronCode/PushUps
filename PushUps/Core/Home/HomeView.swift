@@ -15,16 +15,11 @@ struct HomeView: View {
     @State private var isNavigatingToPushUpsView = false
     @State private var scrollTarget: Int? = nil
     
-    // Manage the position of the scrollingButton view
-    @State private var position: Position = .center
-    
     var body: some View {
         NavigationView {
             ZStack {
                 
-                Color(.gray)
-                    .opacity(0.3)
-                    .ignoresSafeArea()
+                Colors.grayBackground
                 
                 VStack {
                     ScrollingButtons
@@ -38,7 +33,7 @@ struct HomeView: View {
                 VStack {
                     
                     Spacer()
-
+                    
                     HStack {
                         VStack {
                             focusButton
@@ -58,10 +53,11 @@ struct HomeView: View {
             .fullScreenCover(isPresented: $isNavigatingToPushUpsView, onDismiss: {
                 // Save the progression
                 viewModel.saveDays()
+                print("Push ups view dismissed")
             }) {
                 PushupsView(homeViewModel: viewModel, dayIndex: viewModel.currentDay)
             }
-
+            
             .sheet(isPresented: $showingDatePicker) {
                 DatePicker("Select Start Date", selection: $selectedDate, displayedComponents: .date)
                     .datePickerStyle(WheelDatePickerStyle())
@@ -86,7 +82,7 @@ struct HomeView: View {
             ProgressView(value: viewModel.progress)
                 .padding(.horizontal,2)
                 .tint(.green)
-//            LinearProgressBar(viewModel.progress, color: .green, cornerRadius: 0)
+            //            LinearProgressBar(viewModel.progress, color: .green, cornerRadius: 0)
         }
         .background(.thinMaterial)
         .foregroundStyle(.gray)
@@ -106,7 +102,7 @@ struct HomeView: View {
                 .overlay {
                     HStack {
                         Text("Push".uppercased())
-//                        Image(systemName: "figure.strengthtraining.traditional")
+                        //                        Image(systemName: "figure.strengthtraining.traditional")
                     }
                     .foregroundStyle(.white)
                     .fontWeight(.black)
@@ -178,7 +174,7 @@ extension HomeViewModel {
         // Considering 'missed' as days past the 'currentDay' with pushups count less than the goal
         days.prefix(currentDay).filter { $0.pushupsCount < $0.goal }.count
     }
-
+    
     // Calculate the maximum number of pushups done in one day
     var maxPushUpsInOneDay: Int {
         days.map { $0.pushupsCount }.max() ?? 0
@@ -189,32 +185,34 @@ extension HomeView {
     var ScrollingButtons: some View {
         ScrollView {
             ScrollViewReader { value in
-                LazyVStack(spacing: 10) {
-                    ForEach(viewModel.days) { day in
-                        DayButtonSquareTest(homeViewModel: viewModel, dayIndex: day.id)
-                            .onTapGesture {
-                                if day.id == viewModel.currentDay {
-                                    isNavigatingToPushUpsView.toggle()
+                HStack {
+                    LazyVStack(spacing: 10) {
+                        ForEach(viewModel.days) { day in
+                            DayButton(homeViewModel: viewModel, dayIndex: day.id)
+                                .onTapGesture {
+                                    if day.id == viewModel.currentDay {
+                                        isNavigatingToPushUpsView.toggle()
+                                    }
                                 }
-                            }
-                        RoundedSpacer(color: .gray)
+                            RoundedSpacer(color: .gray)
+                        }
                     }
-                }
-                .offset(y: 100)
-                .onAppear {
-                    scrollTarget = viewModel.currentDay
-                }
-                .onChange(of: scrollTarget) { target, uselessArguement in
-                    HapticManager.shared.generateFeedback(for: .successLight)
-                    if let target = target {
-                        withAnimation {
-                            value.scrollTo(target, anchor: .center)
+                    .offset(y: 70)
+                    .onAppear {
+                        scrollTarget = viewModel.currentDay
+                    }
+                    .onChange(of: scrollTarget) { target, uselessArguement in
+                        HapticManager.shared.generateFeedback(for: .successLight)
+                        if let target = target {
+                            withAnimation {
+                                value.scrollTo(target, anchor: .center)
+                            }
                         }
                     }
                 }
-                
             }
         }
+        .scrollIndicators(.hidden)
     }
 }
 
